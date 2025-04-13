@@ -4,8 +4,7 @@ package edu.grinnell.csc207.texteditor;
  */
 public class GapBuffer {
     private char[] str;
-    private int start; //start and end represent the start and end of the entire
-    //gapbuffer, including the text and the actual gap
+    private int start; 
     private int end;
     private int initSize;
     
@@ -15,8 +14,7 @@ public class GapBuffer {
     public GapBuffer() {
         this.initSize = 32; 
         this.str = new char[initSize];
-        this.start = 0; //if the gap buffer is everything, including text not in 
-        //the gap, how do we know where the gap starts and ends?
+        this.start = 0; 
         this.end = initSize - 1;
     }
     
@@ -90,7 +88,7 @@ public class GapBuffer {
      */
     public void moveLeft() { 
         if (start > 0) {
-            str[end]=str[start - 1];
+            str[end] = str[start - 1];
             start--;
             end--;
         }

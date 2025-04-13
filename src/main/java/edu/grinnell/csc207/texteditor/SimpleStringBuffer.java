@@ -4,11 +4,13 @@ package edu.grinnell.csc207.texteditor;
  * A naive implementation of a text buffer using a <code>String</code>.
  */
 public class SimpleStringBuffer {
+
     StringBuffer simpleStringBuffer = new StringBuffer();
     int cursor = 0;
-    
+
     /**
      * Inserts the specified character into the string buffer.
+     *
      * @param ch The character to insert into the buffer
      */
     public void insert(char ch) {
@@ -17,18 +19,20 @@ public class SimpleStringBuffer {
     }
 
     /**
-     * Deletes the value at the current cursor position, then decrements the 
+     * Deletes the value at the current cursor position, then decrements the
      * cursor by one; Returns null if the string buffer is empty.
      */
     public void delete() {
-        if (cursor == 0)
+        if (cursor == 0) {
             return;
+        }
         simpleStringBuffer.delete(getCursorPosition() - 1, getCursorPosition());
         cursor--;
     }
 
     /**
      * Returns the current cursor position.
+     *
      * @return the current cursor position.
      */
     public int getCursorPosition() {
@@ -40,8 +44,9 @@ public class SimpleStringBuffer {
      * nothing happens.
      */
     public void moveLeft() {
-        if (cursor == 0)
+        if (cursor == 0) {
             return;
+        }
         cursor--;
     }
 
@@ -50,13 +55,15 @@ public class SimpleStringBuffer {
      * nothing happens.
      */
     public void moveRight() {
-        if (cursor == getSize())
+        if (cursor == getSize()) {
             return;
+        }
         cursor++;
     }
 
     /**
      * Returns the size of the string buffer.
+     *
      * @return The length (size) of the string buffer.
      */
     public int getSize() {
@@ -65,6 +72,7 @@ public class SimpleStringBuffer {
 
     /**
      * Gets a char from a string buffer at the index, i.
+     *
      * @param i The index to get a char from.
      * @return The character at the index, i.
      */
@@ -74,10 +82,11 @@ public class SimpleStringBuffer {
 
     /**
      * Converts a stringbuffer to a string and returns it.
+     *
      * @return The string version of the stringbuffer.
      */
     @Override
     public String toString() {
-       return (simpleStringBuffer.toString());
+        return (simpleStringBuffer.toString());
     }
 }
