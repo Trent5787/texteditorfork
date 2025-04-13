@@ -3,15 +3,20 @@ package edu.grinnell.csc207.texteditor;
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
-    private char[] Str;
-    private int start; //start and end represent the start and end of the entire gapbuffer, including the text and the actual gap
+    private char[] str;
+    private int start; //start and end represent the start and end of the entire
+    //gapbuffer, including the text and the actual gap
     private int end;
     private int initSize;
     
+    /**
+     * GapBuffer constructor
+     */
     public GapBuffer() {
         this.initSize = 32; 
-        this.Str = new char[initSize];
-        this.start = 0; //if the gap buffer is everything, including text not in the gap, how do we know where the gap starts and ends?
+        this.str = new char[initSize];
+        this.start = 0; //if the gap buffer is everything, including text not in 
+        //the gap, how do we know where the gap starts and ends?
         this.end = initSize - 1;
     }
     
@@ -20,7 +25,7 @@ public class GapBuffer {
      * @return start
      */
     public int getStart() {
-        return(start);
+        return (start);
     }
     
     /**
@@ -28,7 +33,7 @@ public class GapBuffer {
      * @return end
      */
     public int getEnd() {
-        return(end);
+        return (end);
     }
     
     /**
@@ -39,16 +44,16 @@ public class GapBuffer {
 
         // Copy left part
         for (int i = 0; i < start; i++) {
-            newStr[i] = Str[i];
+            newStr[i] = str[i];
         }
 
         // Copy right part (after gap)
-        for (int j = end; j < Str.length; j++) {
-            newStr[j + newStr.length / 2] = Str[j];
+        for (int j = end; j < str.length; j++) {
+            newStr[j + newStr.length / 2] = str[j];
         }
 
         end += getSize() / 2;
-        Str = newStr;
+        str = newStr;
     }
 
     /**
@@ -60,7 +65,7 @@ public class GapBuffer {
             doubleSize();
             return;
         }
-        Str[start++] = ch;
+        str[start++] = ch;
     }
 
     /**
@@ -83,9 +88,9 @@ public class GapBuffer {
     /**
      * Moves the cursor left
      */
-    public void moveLeft() { //
+    public void moveLeft() { 
         if (start > 0) {
-            Str[end]=Str[start-1];
+            str[end]=str[start - 1];
             start--;
             end--;
         }
@@ -95,11 +100,11 @@ public class GapBuffer {
      * Moves the cursor right
      */
     public void moveRight() {
-        if(end >= Str.length-1) {
+        if (end >= str.length - 1) {
             //Cursor at end of buffer
             return;
         }   
-        Str[start] = Str[end+1];
+        str[start] = str[end + 1];
         start++;
         end++;
     }
@@ -109,7 +114,7 @@ public class GapBuffer {
      * @return the size of the buffer
      */
     public int getSize() {
-        return Str.length;
+        return str.length;
     }
 
     /**
@@ -118,13 +123,13 @@ public class GapBuffer {
      * @return the char at that index
      */
     public char getChar(int i) {
-        if (i >= Str.length) {
+        if (i >= str.length) {
             throw new IllegalArgumentException("Index out of bounds");
         }
         if (i >= start && i < end) {
             throw new IllegalArgumentException("Index inside the gap");
         }
-        return Str[i];
+        return str[i];
     }
 
     /**
@@ -136,9 +141,9 @@ public class GapBuffer {
         String strChar;
         char ch;
 
-        for (int i = 0; i < Str.length; i++) {
-            if (Str[i] != (char) 0) {
-                ch = Str[i];
+        for (int i = 0; i < str.length; i++) {
+            if (str[i] != (char) 0) {
+                ch = str[i];
                 strChar = Character.toString(ch);
                 string = string.concat(strChar);
             }

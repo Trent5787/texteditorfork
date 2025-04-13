@@ -4,7 +4,7 @@ package edu.grinnell.csc207.texteditor;
  * A naive implementation of a text buffer using a <code>String</code>.
  */
 public class SimpleStringBuffer {
-    StringBuffer SimpleStringBuffer = new StringBuffer();
+    StringBuffer simpleStringBuffer = new StringBuffer();
     int cursor = 0;
     
     /**
@@ -12,7 +12,7 @@ public class SimpleStringBuffer {
      * @param ch The character to insert into the buffer
      */
     public void insert(char ch) {
-        SimpleStringBuffer.insert(getCursorPosition(),ch);
+        simpleStringBuffer.insert(getCursorPosition(), ch);
         cursor++;
     }
 
@@ -23,7 +23,7 @@ public class SimpleStringBuffer {
     public void delete() {
         if (cursor == 0)
             return;
-        SimpleStringBuffer.delete(getCursorPosition()-1,getCursorPosition());
+        simpleStringBuffer.delete(getCursorPosition() - 1, getCursorPosition());
         cursor--;
     }
 
@@ -32,7 +32,7 @@ public class SimpleStringBuffer {
      * @return the current cursor position.
      */
     public int getCursorPosition() {
-        return(cursor);
+        return (cursor);
     }
 
     /**
@@ -60,7 +60,7 @@ public class SimpleStringBuffer {
      * @return The length (size) of the string buffer.
      */
     public int getSize() {
-        return(SimpleStringBuffer.length());
+        return (simpleStringBuffer.length());
     }
 
     /**
@@ -69,7 +69,7 @@ public class SimpleStringBuffer {
      * @return The character at the index, i.
      */
     public char getChar(int i) {
-        return(SimpleStringBuffer.charAt(i));
+        return (simpleStringBuffer.charAt(i));
     }
 
     /**
@@ -78,6 +78,6 @@ public class SimpleStringBuffer {
      */
     @Override
     public String toString() {
-       return(SimpleStringBuffer.toString());
+       return (simpleStringBuffer.toString());
     }
 }
