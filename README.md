@@ -10,9 +10,11 @@
  * - Apache Netbeans IDE
  * - Course website by Professor Osera for instructions:
  *   https://osera.cs.grinnell.edu/ttap/data-structures-labs/text-editor.html
+ * - David, my tutor, who guided me through the process of fixing many of the problems with the drawBuffer and toString method, and other general help with the project. 
 
 
 ## Changelog
+Fixed and debugged drawBuffer and methods in gapBuffer, some parts of main, and the toString method to get the gapbuffer to work correctly. As far as I can tell, everything should work now. 
 
 ## Analyzing the simple string Buffer
 * Relevant inputs: explicitly: a character (ch) implicitly: the current cursor position, and the length
