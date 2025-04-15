@@ -34,8 +34,6 @@ public class TextEditor {
         for (int i = 0; i < buf.getSize(); i++) {
             if (i >= buf.getStart() && i <= buf.getEnd()) { //implemented this 
                 //to attempt to prevent traversals into the gap
-                System.out.println(buf.getStart());
-                System.out.println(buf.getEnd());
                 TerminalPosition pos = new TerminalPosition(inc, row);
                 screen.setCursorPosition(pos);
                 continue;
@@ -52,9 +50,6 @@ public class TextEditor {
             } else {
                 inc++;
             }
-            System.out.println("row:" + row);
-            System.out.println("inc:" + inc);
-            System.out.println("char:" + textChar);
         }
         screen.refresh();
     }
@@ -94,18 +89,13 @@ public class TextEditor {
 
         //Contents from file read and displayed
         String str = Files.readString(pathPath);
-        System.out.println("str is (should be og contents of file):" + str);
         char[] charArray = str.toCharArray();
         GapBuffer gap = new GapBuffer();
 
         for (int i = 0; i < charArray.length; i++) {
-            System.out.println("Iteration of for loop number: "+ i);
-            System.out.println("Char array at this iteration is: " + charArray[i]);
             gap.insert(charArray[i]);
         }
 
-        System.out.println("Gap is (should still be original contents of file):"
-                + gap.toString());
         //read characters from gap buffer and write to the screen
 
         //reading inputs, checking what they are, and performing 

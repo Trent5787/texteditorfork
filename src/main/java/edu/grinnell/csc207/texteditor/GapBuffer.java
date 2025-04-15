@@ -11,7 +11,7 @@ public class GapBuffer {
     /**
      * GapBuffer constructor
      */
-    public GapBuffer() { //NOTE: Changes made here
+    public GapBuffer() { 
         this.initSize = 32; 
         this.str = new char[initSize];
         this.start = 0; 
@@ -34,7 +34,7 @@ public class GapBuffer {
         return (end);
     }
     
-    public void incrementSize() { //NOTE: new method
+    public void incrementSize() { 
         char[] newStr = new char[1];
         end++;
         str = newStr;
@@ -64,13 +64,12 @@ public class GapBuffer {
      * Inserts the specified character into the buffer
      * @param ch the character to insert
      */
-    public void insert(char ch) { //NOTE: made changes here
+    public void insert(char ch) {
         if (start == end) {
             doubleSize();
-            System.out.println("Doubling size");
         }
         str[start++] = ch;
-        //System.out.println(ch);
+
     }
 
     /**
