@@ -15,7 +15,7 @@ public class GapBuffer {
         this.initSize = 32; 
         this.str = new char[initSize];
         this.start = 0; 
-        this.end = initSize-1;
+        this.end = initSize - 1;
     }
     
     /**
@@ -34,12 +34,6 @@ public class GapBuffer {
         return (end);
     }
     
-    public void incrementSize() { 
-        char[] newStr = new char[1];
-        end++;
-        str = newStr;
-    }
-    
     /**
      * Doubles the size of the buffer
      */
@@ -52,7 +46,7 @@ public class GapBuffer {
         }
 
         // Copy right part (after gap)
-        for (int j = end+1; j < str.length; j++) {
+        for (int j = end + 1; j < str.length; j++) {
             newStr[j + newStr.length / 2] = str[j];
         }
 
