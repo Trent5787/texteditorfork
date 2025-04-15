@@ -12,10 +12,10 @@ public class GapBuffer {
      * GapBuffer constructor
      */
     public GapBuffer() { //NOTE: Changes made here
-        this.initSize = 0; 
+        this.initSize = 32; 
         this.str = new char[initSize];
         this.start = 0; 
-        this.end = 0;
+        this.end = initSize-1;
     }
     
     /**
@@ -52,11 +52,11 @@ public class GapBuffer {
         }
 
         // Copy right part (after gap)
-        for (int j = end; j < str.length; j++) {
+        for (int j = end+1; j < str.length; j++) {
             newStr[j + newStr.length / 2] = str[j];
         }
 
-        end += str.length / 2;
+        end += str.length;
         str = newStr;
     }
 
@@ -65,21 +65,12 @@ public class GapBuffer {
      * @param ch the character to insert
      */
     public void insert(char ch) { //NOTE: made changes here
-        if (start == 0 && end == 0){
-            incrementSize(); //because we can't double zero
-            System.out.println("Incrementing size");
-            str[start++] = ch;
-            System.out.println(ch);
-            return;
-        } else if (start == end) {
+        if (start == end) {
             doubleSize();
             System.out.println("Doubling size");
-            str[start] = ch; //somehow this isn't working
-            //System.out.println(ch);
-            return;
         }
         str[start++] = ch;
-        System.out.println(ch);
+        //System.out.println(ch);
     }
 
     /**
@@ -88,6 +79,7 @@ public class GapBuffer {
     public void delete() {
         if (start > 0) {
             start--;
+            str[start] = 0;
         }
     }
 
@@ -106,6 +98,7 @@ public class GapBuffer {
         if (start > 0) {
             str[end] = str[start - 1];
             start--;
+            str[start] = 0;
             end--;
         }
     }
