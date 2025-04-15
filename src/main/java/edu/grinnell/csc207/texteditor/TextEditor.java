@@ -99,6 +99,8 @@ public class TextEditor {
         GapBuffer gap = new GapBuffer();
 
         for (int i = 0; i < charArray.length; i++) {
+            System.out.println("Iteration of for loop number: "+ i);
+            System.out.println("Char array at this iteration is: " + charArray[i]);
             gap.insert(charArray[i]);
         }
 

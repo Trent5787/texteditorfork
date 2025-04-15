@@ -11,11 +11,11 @@ public class GapBuffer {
     /**
      * GapBuffer constructor
      */
-    public GapBuffer() {
-        this.initSize = 32; 
+    public GapBuffer() { //NOTE: Changes made here
+        this.initSize = 0; 
         this.str = new char[initSize];
         this.start = 0; 
-        this.end = initSize - 1;
+        this.end = 0;
     }
     
     /**
@@ -34,11 +34,17 @@ public class GapBuffer {
         return (end);
     }
     
+    public void incrementSize() { //NOTE: new method
+        char[] newStr = new char[1];
+        end++;
+        str = newStr;
+    }
+    
     /**
      * Doubles the size of the buffer
      */
     public void doubleSize() {
-        char[] newStr = new char[getSize() * 2];
+        char[] newStr = new char[str.length * 2];
 
         // Copy left part
         for (int i = 0; i < start; i++) {
@@ -50,7 +56,7 @@ public class GapBuffer {
             newStr[j + newStr.length / 2] = str[j];
         }
 
-        end += getSize() / 2;
+        end += str.length / 2;
         str = newStr;
     }
 
@@ -58,12 +64,22 @@ public class GapBuffer {
      * Inserts the specified character into the buffer
      * @param ch the character to insert
      */
-    public void insert(char ch) {
-        if (start == end) {
+    public void insert(char ch) { //NOTE: made changes here
+        if (start == 0 && end == 0){
+            incrementSize(); //because we can't double zero
+            System.out.println("Incrementing size");
+            str[start++] = ch;
+            System.out.println(ch);
+            return;
+        } else if (start == end) {
             doubleSize();
+            System.out.println("Doubling size");
+            str[start] = ch; //somehow this isn't working
+            //System.out.println(ch);
             return;
         }
         str[start++] = ch;
+        System.out.println(ch);
     }
 
     /**
@@ -112,7 +128,7 @@ public class GapBuffer {
      * @return the size of the buffer
      */
     public int getSize() {
-        return str.length;
+        return (str.length - (end - start + 1));
     }
 
     /**
