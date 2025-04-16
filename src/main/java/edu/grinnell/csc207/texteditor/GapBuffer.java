@@ -118,7 +118,7 @@ public class GapBuffer {
     }
     
     /**
-     *
+     * returns str.length
      * @return str.length
      */
     public int getSize2() {
