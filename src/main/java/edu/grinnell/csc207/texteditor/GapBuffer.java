@@ -116,6 +116,10 @@ public class GapBuffer {
     public int getSize() {
         return (str.length - (end - start + 1));
     }
+    
+    public int getSize2() {
+        return str.length;
+    }
 
     /**
      * Grabs the char at the specified index
@@ -126,9 +130,14 @@ public class GapBuffer {
         if (i >= str.length) {
             throw new IllegalArgumentException("Index out of bounds");
         }
-        if (i >= start && i < end) {
-            throw new IllegalArgumentException("Index inside the gap");
+        
+        if (i >= start && i <= end) {
+            //if(i < str.length - 1) {
+            //i++;
+            throw new IllegalArgumentException("Index in the gap");
+          //  }
         }
+        System.out.println("The character we are getting:" + str[i]);
         return str[i];
     }
 

@@ -31,13 +31,17 @@ public class TextEditor {
 
         int inc = 0;
         int row = 0;
-        for (int i = 0; i < buf.getSize(); i++) {
+        for (int i = 0; i < buf.getSize2(); i++) {
+           
             if (i >= buf.getStart() && i <= buf.getEnd()) { //implemented this 
                 //to attempt to prevent traversals into the gap
                 TerminalPosition pos = new TerminalPosition(inc, row);
                 screen.setCursorPosition(pos);
                 continue;
             }
+            
+            
+            
             char ch = buf.getChar(i); // Get the character at index i
 
             TextCharacter textChar = TextCharacter.fromCharacter(ch)[0];
@@ -51,6 +55,8 @@ public class TextEditor {
                 inc++;
             }
         }
+      //  TerminalPosition pos = new TerminalPosition(inc, row);
+       // screen.setCursorPosition(pos);
         screen.refresh();
     }
 
