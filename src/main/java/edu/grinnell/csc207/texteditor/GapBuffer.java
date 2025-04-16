@@ -117,6 +117,10 @@ public class GapBuffer {
         return (str.length - (end - start + 1));
     }
     
+    /**
+     *
+     * @return str.length
+     */
     public int getSize2() {
         return str.length;
     }
@@ -137,7 +141,6 @@ public class GapBuffer {
             throw new IllegalArgumentException("Index in the gap");
           //  }
         }
-        System.out.println("The character we are getting:" + str[i]);
         return str[i];
     }
 
